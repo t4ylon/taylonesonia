@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nosso Wrapped ❤️</title>
+    <style>
+        body {
+            margin: 0; padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #000; color: white;
+            display: flex; justify-content: center; align-items: center;
+            height: 100vh; overflow: hidden; user-select: none;
+        }
+        .story-container {
+            width: 100%; max-width: 450px; height: 100vh; max-height: 850px;
+            position: relative; display: flex; flex-direction: column;
+            background-color: #121212; box-shadow: 0 0 20px rgba(0,0,0,0.8);
+        }
+        .slide {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            padding: 30px; box-sizing: border-box; text-align: center;
+            opacity: 0; pointer-events: none; transition: opacity 0.3s ease-in-out;
+            background: linear-gradient(180deg, #181818 0%, #121212 100%);
+        }
+        .slide.active { opacity: 1; pointer-events: auto; }
+        
+        /* Tema Spotify Clássico */
+        .highlight { color: #1DB954; } /* Verde Spotify */
+        .bg-gradient { background: linear-gradient(135deg, #1DB954 0%, #121212 60%); }
+        
+        h1 { font-size: 2rem; font-weight: 800; margin-bottom: 15px; line-height: 1.2; }
+        h2 { font-size: 1.3rem; font-weight: 600; margin-bottom: 10px; color: #b3b3b3; }
+        p { font-size: 1.1rem; margin-bottom: 15px; line-height: 1.4; color: #e5e5e5; }
+        .big-number { font-size: 3rem; font-weight: 900; margin: 15px 0; color: #1DB954; }
+
+        /* Estilo das Fotos */
+        img {
+            max-width: 90%;
+            max-height: 35vh;
+            border-radius: 12px;
+            box-shadow: 0 8px 15px rgba(0,0,0,0.5);
+            margin: 15px 0;
+            object-fit: cover;
+        }
+
+        .controls { position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; z-index: 10; }
+        .controls .left { flex: 1; }
+        .controls .right { flex: 2; }
+        
+        .progress-bar-container { position: absolute; top: 15px; left: 15px; right: 15px; display: flex; gap: 4px; z-index: 20; }
+        .progress-bar { flex: 1; height: 3px; background: rgba(255, 255, 255, 0.2); border-radius: 2px; overflow: hidden; }
+        .progress-bar-fill { height: 100%; background: white; width: 0%; transition: width 0.1s linear; }
+    </style>
+</head>
+<body>
+
+<div class="story-container">
+    <div class="progress-bar-container" id="progress-container"></div>
+
+    <div class="controls">
+        <div class="left" onclick="prevSlide()"></div>
+        <div class="right" onclick="nextSlide()"></div>
+    </div>
+
+    <!-- Slide 1: Início -->
+    <div class="slide bg-gradient active">
+        <h1>Sonia,<br>este é o nosso <span class="highlight">Wrapped</span></h1>
+        <img src="foto-inicio.jpg" alt="Nossa Foto">
+        <p>Um resumo de como tem sido a nossa trilha sonora...</p>
+        <p style="font-size: 0.8rem; color: #b3b3b3;">(Toque na direita para avançar 👉)</p>
+    </div>
+
+    <!-- Slide 2: Minutos -->
+    <div class="slide">
+        <h2>Tempo de reprodução</h2>
+        <p>Desde 01/04/2020, já estivemos juntos por</p>
+        <div class="big-number">3.258.720</div>
+        <h2>minutos</h2>
+        <p>E eu não pularia nem 1 segundo.</p>
+    </div>
+
+    <!-- Slide 3: Gênero -->
+    <div class="slide">
+        <h2>Seu gênero mais ouvido:</h2>
+        <h1 class="highlight">Momentos em família</h1>
+        <img src="foto-familia.jpg" alt="Foto Família">
+        <p>A melhor batida que existe.</p>
+    </div>
+
+    <!-- Slide 4: Artista -->
+    <div class="slide">
+        <h2>O Artista #1 do seu coração</h2>
+        <h1 class="highlight">Gabriel</h1>
+        <img src="foto-gabriel.jpg" alt="Foto Gabriel">
+        <p>Estatística: <strong>24 horas por dia!</strong></p>
+    </div>
+
+    <!-- Slide 5: Séries -->
+    <div class="slide">
+        <h2>Séries que prometemos ver juntos...</h2>
+        <p>E alguém dormiu:</p>
+        <h1>Sonia: <span class="highlight">0</span></h1>
+        <h1>Taylon: <span class="highlight">9.573</span></h1>
+        <p style="font-size: 0.9rem; margin-top: 15px;">Eu sempre durmo... mas durmo ao lado da mulher da minha vida!</p>
+    </div>
+
+    <!-- Slide 6: Top 5 - Casamento -->
+    <div class="slide bg-gradient">
+        <h2>Nosso Top 5 Momentos</h2>
+        <h1>#1 O Casamento</h1>
+        <img src="foto-casamento.jpg" alt="Casamento">
+        <p>O dia em que dissemos sim.</p>
+    </div>
+
+    <!-- Slide 7: Top 5 - Nascimento -->
+    <div class="slide">
+        <h2>Nosso Top 5 Momentos</h2>
+        <h1>#2 Nascimento do Gabriel</h1>
+        <img src="foto-nascimento.jpg" alt="Nascimento Gabriel">
+        <p>O momento em que tudo mudou para melhor.</p>
+    </div>
+
+    <!-- Slide 8: Top 5 - Viagem Casal -->
+    <div class="slide">
+        <h2>Nosso Top 5 Momentos</h2>
+        <h1>#3 Viagem Só Nós Dois</h1>
+        <img src="foto-viagem-casal.jpg" alt="Viagem Casal">
+        <p>Aquele tempo perfeito só nosso.</p>
+    </div>
+
+    <!-- Slide 9: Top 5 - Viagem Família -->
+    <div class="slide">
+        <h2>Nosso Top 5 Momentos</h2>
+        <h1>#4 Viagem com o Gabriel</h1>
+        <img src="foto-viagem-familia.jpg" alt="Viagem Família">
+        <p>Novas aventuras em trio.</p>
+    </div>
+
+    <!-- Slide 10: Top 5 - Praia -->
+    <div class="slide">
+        <h2>Nosso Top 5 Momentos</h2>
+        <h1>#5 Dias de Praia</h1>
+        <img src="foto-praia.jpg" alt="Praia">
+        <p>Sol, mar e vocês.</p>
+    </div>
+
+    <!-- Slide 11: Final -->
+    <div class="slide bg-gradient">
+        <h1 class="highlight">Feliz Dia dos Namorados!</h1>
+        <p style="text-align: left; padding: 0 10px;">Obrigado por estar comigo o tempo todo. Passamos por tantas coisas incríveis: nosso casamento, a mudança da sua casa, o nascimento do Gabriel, mudança para Santarém e muitas outras provações.<br><br>Você é a minha melhor escolha todos os dias.</p>
+        <h2 style="margin-top: 20px; color: white;">Com amor,<br>Taylon ❤️</h2>
+    </div>
+</div>
+
+<script>
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slide');
+    const progressContainer = document.getElementById('progress-container');
+
+    slides.forEach(() => {
+        const bar = document.createElement('div');
+        bar.className = 'progress-bar';
+        bar.innerHTML = '<div class="progress-bar-fill"></div>';
+        progressContainer.appendChild(bar);
+    });
+
+    const progressFills = document.querySelectorAll('.progress-bar-fill');
+
+    function updateUI() {
+        slides.forEach((slide, index) => {
+            if(index === currentSlide) {
+                slide.classList.add('active');
+                progressFills[index].style.width = '100%';
+            } else {
+                slide.classList.remove('active');
+                progressFills[index].style.width = index < currentSlide ? '100%' : '0%';
+            }
+        });
+    }
+
+    function nextSlide() { if (currentSlide < slides.length - 1) { currentSlide++; updateUI(); } }
+    function prevSlide() { if (currentSlide > 0) { currentSlide--; updateUI(); } }
+    updateUI();
+</script>
+</body>
+</html>
